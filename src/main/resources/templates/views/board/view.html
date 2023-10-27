@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout/defaultLayout}"
+      th:with="metaTitle='게시판'">
+<head>
+</head>
+<style>
+
+</style>
+<body>
+<!-- content -->
+<th:block layout:fragment="content">
+    <div>
+        <h2><span th:text="${boardId}"></span>번 - 게시판 </h2>
+    </div>
+    파일 선택 : <input type="file" id="excelFile" onchange="readExcel();"/>
+    <button onclick="dataSend();">전송</button>
+    <div id="displayExcelTable" class="displayExcelTable" style="display:none">
+                <div id="list" class="scrollDiv">
+                </div>
+    
+    </div>
+    <form th:action="@{/views/board/testSearch.do}" method="get">
+        <button type="submit">버튼</button>
+    </form>
+    <div  th:text="${testList}"></div>
+</th:block>
+<!-- //content -->
+
+<!-- script -->
+<th:block layout:fragment="custom_js">
+    <!--<script th:src="@{/assets/views/board/view.js}"></script>-->
+    <script type="text/javascript" th:src="@{/js/com/com.js}"></script>
+</th:block>
+<!-- //script -->
+</body>
+</html>
